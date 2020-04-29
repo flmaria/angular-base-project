@@ -32,7 +32,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## Back-end layer initialization 
 
-Follow [springboot-base-project] (https://github.com/flmaria/springboot-base-project) instructions.
+Follow [springboot-base-project](https://github.com/flmaria/springboot-base-project) instructions.
 
 ## Build
 
