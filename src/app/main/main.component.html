@@ -1,0 +1,55 @@
+<div style="height: 100vh;">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Angular+[select-back-end]</span>
+      <span class="example-spacer"></span>
+      <div fxShow="true" fxHide.lt-md="true">
+        <a routerLink="/app" mat-button>
+          <mat-icon>house</mat-icon>
+          Home
+        </a>
+        
+        <mat-menu id="tb-menu" #appMenu="matMenu">
+          <button mat-menu-item *ngFor="let item of items" [routerLink]="[item.routerLink]">{{item.label}}</button>
+        </mat-menu>
+        
+        <a mat-button [matMenuTriggerFor]="appMenu">
+          <mat-icon>expand_more</mat-icon> Forms
+        </a>
+
+        <a id="tb-logout" (click)="logout()" mat-button>
+          <mat-icon>exit_to_app</mat-icon>
+          Log Out
+        </a>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <mat-sidenav-container fxFlexFill>
+    <mat-sidenav #sidenav>
+      <mat-nav-list>
+        <a routerLink="/app" mat-list-item>
+          <mat-icon>home</mat-icon> Home 
+        </a>
+
+        <mat-menu #appSideMenu="matMenu">
+          <button mat-menu-item *ngFor="let item of items" [routerLink]="[item.routerLink]">{{item.label}}</button>
+        </mat-menu>
+
+        <a mat-list-item [matMenuTriggerFor]="appSideMenu">
+          <mat-icon>expand_more</mat-icon> Forms
+        </a>
+
+        <a (click)="logout()" mat-list-item>
+          <mat-icon>exit_to_app</mat-icon>
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content fxFlexFill>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

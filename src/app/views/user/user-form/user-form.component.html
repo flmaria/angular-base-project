@@ -1,0 +1,51 @@
+<div class="container">
+  <div fxLayout="column" fxLayoutAlign="space-around center">
+    <mat-card class="card">
+      <mat-card-title>
+        <span> {{actionDescription}} User </span>
+      </mat-card-title>
+      
+      <form #createForm="ngForm" (ngSubmit)="onSubmit()">
+        <mat-card-content >
+            <mat-form-field class="full-width">
+              <mat-label>Name</mat-label>
+              <input matInput id="name" name="name" [(ngModel)]="user.name" required>
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+              <mat-label>Login</mat-label>
+              <input matInput id="login" name="login" [(ngModel)]="user.login" required>
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+              <mat-label>E-mail</mat-label>
+              <input matInput type="email" id="email" name="email" [(ngModel)]="user.email"  #txtEmail="ngModel" email required>
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+              <mat-label>Password</mat-label>
+              <input matInput type="password" id="newPassword" name="newPassword" [(ngModel)]="user.newPassword" [required]="!id">
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+              <mat-label>Profile</mat-label>
+              <mat-select id="profile" name="profile" [(ngModel)]="user.profile.id" required>
+                <mat-option *ngFor="let pr of profiles | async" [value]="pr.id">
+                  {{pr.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions fxLayout="row">
+          <span class="spacer"></span>
+          <span>
+            <button mat-raised-button id="btn-save" color="primary" type="submit"><mat-icon>save </mat-icon>Save</button>
+            <button mat-raised-button id="btn-back" (click)="goBack()"><mat-icon>arrow_back </mat-icon>Back</button>
+          </span>
+        </mat-card-actions>
+      </form>
+    </mat-card>
+
+  </div>
+</div>
+

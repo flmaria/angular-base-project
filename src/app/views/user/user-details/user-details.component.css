@@ -1,0 +1,17 @@
+.container {
+    height: 100%;
+    padding-top: 20px;
+}
+
+.card {
+    min-width: 80%;
+}
+
+.label-item {
+    padding-top: 10px;
+    min-width: 80%;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}

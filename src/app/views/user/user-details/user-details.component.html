@@ -1,0 +1,33 @@
+<div class="container">
+  <div fxLayout="column" fxLayoutAlign="space-around center">
+    <mat-card class="card" fxLayout="column">
+      <mat-card-title fxLayout="row">
+        <span> User's Details </span>
+      </mat-card-title>
+      
+      <mat-card-content>
+        <div class="label-item">
+          <label><b>Name:</b> {{user.name}}</label>
+        </div>
+        <div class="label-item">
+          <label><b>Login:</b> {{user.login}}</label>
+        </div>
+        <div class="label-item">
+          <label><b>E-mail:</b> {{user.email}}</label>
+        </div>
+        <div class="label-item">
+          <label><b>Profile:</b> {{user.profile.name}}</label>
+        </div>
+      </mat-card-content>  
+        
+      <mat-card-actions fxLayout="row">
+        <span class="spacer"></span>
+        <span>
+          <button mat-raised-button (click)="goBack()"><mat-icon>arrow_back </mat-icon>Back</button>
+        </span>
+      </mat-card-actions>
+      
+    </mat-card>
+
+  </div>
+</div>

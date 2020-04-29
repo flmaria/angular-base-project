@@ -1,0 +1,24 @@
+<h1 mat-dialog-title>Register user</h1>
+<form [formGroup]="formCreate" (ngSubmit)="createUser()" novalidate>
+    <div mat-dialog-content>
+        <mat-form-field>
+            <input matInput id="name" name="name" formControlName="name" placeholder="Name" required/>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput id="login" name="login" formControlName="login" placeholder="Login" required/>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput type="email" id="email" name="email" formControlName="email" placeholder="E-mail" email required/>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput type="password" id="newPassword" name="newPassword" formControlName="newPassword" placeholder="Password" required/>
+        </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-raised-button id="btn-create" color="primary" type="submit">Create</button>
+        <button mat-button id="btnClose" color="primary" (click)="close()">Cancel</button>
+    </div>
+</form>

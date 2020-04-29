@@ -1,0 +1,13 @@
+.red-snackbar {
+    background: rgb(236, 65, 35);;
+}
+
+.green-snackbar {
+    background: rgb(18, 212, 83);
+}
+
+body,
+html {
+  margin: 0 auto;
+  height: 80%;
+}

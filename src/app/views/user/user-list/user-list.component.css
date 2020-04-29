@@ -1,0 +1,28 @@
+.container {
+    height: 100%;
+    padding-top: 20px;
+}
+
+.card {
+    min-width: 80%;
+}
+
+.mat-table {
+    width: 100%;
+}
+
+a {
+    cursor: pointer;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.margin-right-5px{
+    margin-right: 5px;
+  }
+
+.edit-item {
+    color: #3f51b5
+}

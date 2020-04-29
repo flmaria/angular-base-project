@@ -1,0 +1,25 @@
+<div class="container" fxLayout="column" fxLayoutAlign="space-around center">
+    <form class="form-signin" [formGroup]="formLogin" (ngSubmit)="loginPerfom()" novalidate>
+        <mat-card class="card">
+            <mat-card-title>Login</mat-card-title>
+            <mat-card-content>
+            <mat-form-field>
+                <input matInput id="login" name="login" formControlName="login" placeholder="Login or E-mail" required >
+            </mat-form-field>
+            <br/>
+            <mat-form-field>
+                <input matInput id="password" name="password" formControlName="password" type="password" placeholder="Password" required/>
+            </mat-form-field>
+            </mat-card-content>
+            <mat-card-actions fxLayout="row">
+                <span class="spacer"></span>
+                <span>
+                    <button mat-raised-button id="btn-login" color="primary" type="submit">Login</button>
+                    <button mat-button id="btn-register" color="second" (click)="openDialog()">Register</button>
+                </span>
+            </mat-card-actions>
+        </mat-card>
+    </form>
+
+    
+</div>
