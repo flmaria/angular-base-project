@@ -1,4 +1,4 @@
-# Springboot-Base-Project
+# Angular-Base-Project
 
 Study Angular resources and develop unit and integration tests (e2e)
 
