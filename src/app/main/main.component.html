@@ -12,11 +12,11 @@
           Home
         </a>
         
-        <mat-menu id="tb-menu" #appMenu="matMenu">
+        <mat-menu #appMenu="matMenu">
           <button mat-menu-item *ngFor="let item of items" [routerLink]="[item.routerLink]">{{item.label}}</button>
         </mat-menu>
         
-        <a mat-button [matMenuTriggerFor]="appMenu">
+        <a mat-button id="tb-menu" [matMenuTriggerFor]="appMenu">
           <mat-icon>expand_more</mat-icon> Forms
         </a>
 

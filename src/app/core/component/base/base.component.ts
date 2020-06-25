@@ -24,8 +24,10 @@ export class BaseComponent  {
   public showErrorAlert(error: any) {
     var snackStyle: string = 'red-snackbar';
     
+    console.log(error);
+
     if (error.error) {
-      if (error.status == 404) {
+      if (error.status == 400) {
         let errorFromJson = null;
 
         if (this.jsonUtils.IsJsonString(error.error)) {

@@ -59,6 +59,10 @@ export class UserFormComponent extends BaseComponent implements OnInit {
     }
   }
 
+  public userComparisonFunction = function( option:User, value:User ) : boolean {
+    return option.id === value.id;
+  }
+
   onSubmit() {
     this.submitted = true;
     

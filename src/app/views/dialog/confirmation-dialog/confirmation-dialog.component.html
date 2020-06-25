@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>Confirmation</h1>
+
+<div mat-dialog-content>
+    <label>{{confirmationMessage}}</label>
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button id="btnYes" color="primary" (click)="yesAction()" type="button">Yes</button>
+    <button mat-button id="btnNo" color="primary" (click)="noAction()" type="button">No</button>
+</div>

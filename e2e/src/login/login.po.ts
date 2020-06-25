@@ -11,15 +11,15 @@ export class LoginPage extends BasePO {
         return browser.get(this.getLoginURL());
     }
 
-    authenticatesUser(login:string, password:string) {
-        this.setInputValueFromId('login', login);
-        this.setInputValueFromId('password', password);
+    async authenticatesUser(login:string, password:string) {
+        await this.setInputValueFromId('login', login);
+        await this.setInputValueFromId('password', password);
         
-        this.clickButtonById('btn-login');
+        await this.clickButtonById('btn-login');
     }
 
-    callUserRegistrationScreen() {
-        this.clickButtonById('btn-register');
+    async callUserRegistrationScreen() {
+        await this.clickButtonById('btn-register');
     }
 
 }

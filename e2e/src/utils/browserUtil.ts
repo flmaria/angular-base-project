@@ -4,7 +4,7 @@ export class BrowserUtil {
 
     sleep() {
         console.log('sleep...')
-        // browser.sleep(3000);
+        browser.sleep(3000);
     }
 
 }

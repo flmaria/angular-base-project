@@ -7,41 +7,36 @@ export class UserPage extends BasePO {
         return '/app/users';
     }
     
-    navigateToUsersPage(): promise.Promise<any> {
-        return browser.get(this.getUserURL());
+    async callUserAddScreen() {
+        await this.clickButtonById('btn-add');
     }
 
-    callUserAddScreen() {
-        this.clickButtonById('btn-add');
+    async fromUserAddScreenAddUser(user:any) {
+        await this.setInputValueFromId('name', user.name);
+        await this.setInputValueFromId('login', user.login);
+        await this.setInputValueFromId('email', user.email);
+        await this.setInputValueFromId('newPassword', user.newPassword);
+        await this.setSelectValueFromId('profile', user.profileName);
+
+        await this.clickButtonById('btn-save');
     }
 
-    fromUserAddScreenAddUser(user:any) {
-        this.setInputValueFromId('name', user.name);
-        this.setInputValueFromId('login', user.login);
-        this.setInputValueFromId('email', user.email);
-        this.setInputValueFromId('newPassword', user.newPassword);
-        this.setSelectValueFromId('profile', user.profileName);
-
-        this.clickButtonById('btn-save');
-    }
-
-    fromUserEditScreenUpdateUser(user:any) {
-        this.setInputValueFromId('name', user.name);
-        this.setInputValueFromId('login', user.login);
-        this.setInputValueFromId('email', user.email);
-        this.setInputValueFromId('newPassword', user.newPassword);
+    async fromUserEditScreenUpdateUser(user:any) {
+        await this.setInputValueFromId('name', user.name);
+        await this.setInputValueFromId('login', user.login);
+        await this.setInputValueFromId('email', user.email);
+        await this.setInputValueFromId('newPassword', user.newPassword);
         
-        this.clickButtonById('btn-save');
+        await this.clickButtonById('btn-save');
     }
 
-    fromUserRegistrationAddUser(user:any) {
-        this.setInputValueFromId('name', user.name);
-        // this.setInputValueFromId('login', user.login);
-        this.setInputValueFromIdAndIndex('login', 1, user.login);
-        this.setInputValueFromId('email', user.email);
-        this.setInputValueFromId('newPassword', user.newPassword);
+    async fromUserRegistrationAddUser(user:any) {
+        await this.setInputValueFromId('name', user.name);
+        await this.setInputValueFromIdAndIndex('login', 1, user.login);
+        await this.setInputValueFromId('email', user.email);
+        await this.setInputValueFromId('newPassword', user.newPassword);
         
-        this.clickButtonById('btn-create');
+        await this.clickButtonById('btn-create');
     }
 
     async getRowIndexOnTableByLogin(login:string) {
@@ -83,6 +78,7 @@ export class UserPage extends BasePO {
         
         await userDeleteButton.click();
         await browser.waitForAngular();
+        await this.confirmDialog();
     }
 
     

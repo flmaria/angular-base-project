@@ -54,7 +54,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
         },
         (err) => {
           if (err.status === 401) {
-            this.showErrorAlert('Access denied!');
+            this.showErrorAlert('Login or password invalid');
           } else {
             this.showErrorAlert(err.message);
           }

@@ -22,22 +22,23 @@ describe('User Page', () => {
   });
 
   it('should create, update and delete user', async() => {
-    userPage.navigateToUsersPage();
+    await mainPage.navigateToUsersPage();
     browser.waitForAngular();
-
     browserUtil.sleep();
 
     //############### Create user ###############
-    userPage.callUserAddScreen();
+    await userPage.callUserAddScreen();
+    browser.waitForAngular();
     browserUtil.sleep();
 
     const user = {name:'e2eUserName', login:'e2eUserLogin', email:'e2eUserEmail@test.com', newPassword:'e2epassword', profileName:'Regular'};
-    userPage.fromUserAddScreenAddUser(user);
+    await userPage.fromUserAddScreenAddUser(user);
+    browser.waitForAngular();
     browserUtil.sleep();
 
     const addRowIndex = await userPage.getRowIndexOnTableByLogin(user.login);
     browser.waitForAngular();
-
+    
     expect(addRowIndex).toBeGreaterThan(-1, 'Created user not found');
 
     if (addRowIndex == -1) {
@@ -46,13 +47,15 @@ describe('User Page', () => {
 
     //############### Update user ###############
     await userPage.callUserEditScreenFromIndex(addRowIndex);
+    browser.waitForAngular();
     browserUtil.sleep();
     
     const userUpdate = {name:'e2eUserNameUpdate', login:'e2eUserLoginUpdate', email:'e2eUserEmailUpdate@test.com', 
                             newPassword:'e2epasswordUpdate'
     };
 
-    userPage.fromUserEditScreenUpdateUser(userUpdate);
+    await userPage.fromUserEditScreenUpdateUser(userUpdate);
+    browser.waitForAngular();
     browserUtil.sleep();
     
     const editRowIndex = await userPage.getRowIndexOnTableByLogin(userUpdate.login);
@@ -66,6 +69,7 @@ describe('User Page', () => {
 
     //############### Delete user ###############
     await userPage.callUserDeleteFromIndex(editRowIndex);
+    browser.waitForAngular();
     browserUtil.sleep();
 
     const deleteRowIndex = await userPage.getRowIndexOnTableByLogin(userUpdate.login);
@@ -76,6 +80,7 @@ describe('User Page', () => {
 
   afterEach(() => {
     mainPage.logoutUser();
+    browser.waitForAngular();
     browserUtil.sleep();
   });
   
