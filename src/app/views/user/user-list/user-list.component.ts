@@ -12,6 +12,8 @@ import { tap } from 'rxjs/operators';
 import { MatSort } from '@angular/material/sort';
 import { BaseComponent } from 'src/app/core/component/base/base.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmationDialogComponent } from '../../dialog/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-user-list',
@@ -26,8 +28,10 @@ export class UserListComponent extends BaseComponent implements OnInit, AfterVie
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private snackBar: MatSnackBar, private userService: UserService,
-    private router: Router) {
+  constructor(private snackBar: MatSnackBar, 
+    private userService: UserService,
+    private router: Router,
+    public dialog: MatDialog) {
       super(snackBar);
   }
 
@@ -65,12 +69,21 @@ export class UserListComponent extends BaseComponent implements OnInit, AfterVie
   }
 
   deleteUser(id: number) {
-    this.userService.deleteUser(id)
-      .subscribe(
-        data => {
-          this.reloadData();
-        },
-        error => this.showErrorAlert(error));
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: '200px',
+      data: 'Delete user?'
+    });
+    
+    dialogRef.afterClosed().subscribe(result => {
+      if (result && result == 'yes') {
+        this.userService.deleteUser(id)
+        .subscribe(
+          data => {
+            this.reloadData();
+          },
+          error => this.showErrorAlert(error));
+      }
+    });
   }
 
   userDetails(id: number){

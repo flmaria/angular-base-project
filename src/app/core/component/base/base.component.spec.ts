@@ -21,14 +21,14 @@ describe('BaseComponent', () => {
     expect(snackBarSpy.open).toHaveBeenCalledTimes(1);
   });
 
-  it('should call error alert when received error with 404 status and array message', () => {
-    let error = {status:404, error:['message error']};
+  it('should call error alert when received error with 400 status and array message', () => {
+    let error = {status:400, error:['message error']};
     baseComponent.showErrorAlert(error);
     expect(snackBarSpy.openFromComponent).toHaveBeenCalledTimes(1);
   });
   
   it('should call error alert when received error with 404 status and message', () => {
-    let error = {status:404, error:'message error'};
+    let error = {status:400, error:'message error'};
     baseComponent.showErrorAlert(error);
     expect(snackBarSpy.open).toHaveBeenCalledTimes(1);
   });

@@ -41,6 +41,7 @@ import { UserFormComponent } from './views/user/user-form/user-form.component';
 import { UserRegistrationDialogComponent } from './views/dialog/user-registration-dialog/user-registration-dialog.component';
 
 import { MainComponent } from './main/main.component';
+import { ConfirmationDialogComponent } from './views/dialog/confirmation-dialog/confirmation-dialog.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -64,7 +65,8 @@ const JWT_Module_Options: JwtModuleOptions = {
     UserDetailsComponent,
     UserFormComponent,
     UserRegistrationDialogComponent,
-    SnackBarRequiredFieldComponent
+    SnackBarRequiredFieldComponent,
+    ConfirmationDialogComponent
   ],
   imports: [
     BrowserModule,

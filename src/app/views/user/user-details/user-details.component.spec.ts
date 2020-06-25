@@ -12,6 +12,7 @@ import { asyncData } from 'src/app/core/testing/async-observable-helpers';
 import { Profile } from 'src/app/core/model/Profile';
 import { DebugElement } from '@angular/core';
 import {By} from '@angular/platform-browser';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 describe('UserDetailsComponent', () => {
   let component: UserDetailsComponent;
@@ -24,6 +25,8 @@ describe('UserDetailsComponent', () => {
   let activatedRouteSpy = { snapshot: convertToParamMap({ 'id': 12 })};
   let activatedRoute:any;
   
+  let matSnackBarSpy = jasmine.createSpyObj('MatSnackBar', ['']);
+
   beforeEach(
     async(() => {
       TestBed.configureTestingModule({
@@ -34,7 +37,8 @@ describe('UserDetailsComponent', () => {
           providers: [
             {provide: UserService, useValue: userServiceSpy},
             {provide: Router, useValue: routerSpy},
-            {provide: ActivatedRoute, useValue: activatedRouteSpy}
+            {provide: ActivatedRoute, useValue: activatedRouteSpy},
+            {provide: MatSnackBar, useValue: matSnackBarSpy}
           ]
       })
       .compileComponents()

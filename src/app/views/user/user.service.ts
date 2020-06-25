@@ -9,7 +9,7 @@ import { environment } from '../../../environments/environment';
 })
 export class UserService {
 
-  private urlApi: string;
+  public urlApi: string;
 
   constructor(private http: HttpClient) { 
     this.urlApi = environment.urlApi + '/users';

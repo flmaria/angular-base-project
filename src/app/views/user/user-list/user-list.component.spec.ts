@@ -15,6 +15,7 @@ import { Profile } from 'src/app/core/model/Profile';
 import { asyncData } from 'src/app/core/testing/async-observable-helpers';
 import { UserDataSource } from '../user-data-source';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
 
 describe('UserListComponent', () => {
   let component: UserListComponent;
@@ -27,6 +28,7 @@ describe('UserListComponent', () => {
   let dataSource:UserDataSource;
   let dataSourceSpy = jasmine.createSpyObj('UserDataSource', ['loadUsers', 'counter', 'connect', 'disconnect']);
   let matSnackBarSpy = jasmine.createSpyObj('MatSnackBar', ['']);
+  let matDialogSpy = jasmine.createSpyObj('MatDialog', ['open']);
 
   beforeEach(
     async(() => {
@@ -39,7 +41,8 @@ describe('UserListComponent', () => {
             {provide: UserService, useValue: userServiceSpy},
             {provide: Router, useValue: routerSpy},
             {provide: UserDataSource, useValue: dataSourceSpy},
-            {provide: MatSnackBar, useValue: matSnackBarSpy}
+            {provide: MatSnackBar, useValue: matSnackBarSpy},
+            {provide: MatDialog, useValue: matDialogSpy}
           ]
       })
       .compileComponents()
